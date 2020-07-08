@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-	<title>Document</title>
+	<title>Оптимизация приложения с computed и Отслеживание изменений с watch</title>
 </head>
 <body>
 	<div class="wrapper">
@@ -50,6 +50,11 @@
 				computedResult: function() {
 					console.log('result by Computed');
 					return this.condition = this.counter > 3 ? 'Больше 3' : 'Меньше 3'
+				}
+			},
+			watch: {
+				counter: function(val) {
+					console.log(val)
 				}
 			}
 		})
