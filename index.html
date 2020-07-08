@@ -9,23 +9,47 @@
 <body>
 	<div class="wrapper">
 		<div id="app">
+			<h1 style="text-align: center;">Первый способ</h1>
 			<h2>Счетчик {{ counter }}</h2>
+			<h3>{{ condition }}</h3>
 			<button @click="add">Add</button>
 			<button @click="sub">Sub</button>
+			<hr>
+			<h1 style="text-align: center;">Второй способ</h1>
+			<h2>Счетчик {{ counter }} / {{ counter2 }}</h2>
+			<h3>result {{ result() }}</h3>
+			<h3>computedResult {{ computedResult }}</h3>
+			<button @click="add">Add</button>
+			<button @click="sub">Sub</button>
+			<button @click="counter2++">Sub</button>
 		</div>
 	</div>
 	<script>
 		var app = new Vue({
 			el: '#app',
 			data: {
-				counter: 0
+				counter: 0,
+				counter2: 0,
+				condition: 'Меньше 3'
 			},
 			methods: {
 				add: function() {
 					this.counter++
+					this.condition = this.counter > 3 ? 'Больше 3' : 'Меньше 3'
 				},
 				sub: function() {
 					this.counter--
+					this.condition = this.counter > 3 ? 'Больше 3' : 'Меньше 3'
+				},
+				result: function() {
+					console.log('result by Methods');
+					return this.condition = this.counter > 3 ? 'Больше 3' : 'Меньше 3'
+				}
+			},
+			computed: {
+				computedResult: function() {
+					console.log('result by Computed');
+					return this.condition = this.counter > 3 ? 'Больше 3' : 'Меньше 3'
 				}
 			}
 		})
